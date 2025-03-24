@@ -22,7 +22,7 @@ import Data.Colour.SRGB (sRGB24show)
 import Data.Either (rights)
 import Data.List (foldl')
 import Data.Maybe (fromMaybe, isJust)
-import GHC.Natural (intToNatural)
+import GHC.Natural (naturalFromInteger, Natural)
 import qualified Control.Lens as L
 import qualified Data.ByteString.Lazy.Char8 as BL
 import qualified Data.ByteString.Char8 as B
@@ -39,6 +39,9 @@ import qualified Graphics.Vega.VegaLite.Theme as VL
 
 -- Local
 import Ploterific.Plot.Types
+
+intToNatural :: Int -> Natural
+intToNatural = naturalFromInteger . fromIntegral
 
 -- | Split the measurement of a feature.
 splitColMeasure :: T.Text -> Either T.Text (T.Text, VL.Measurement)
